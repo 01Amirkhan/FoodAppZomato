@@ -1,47 +1,0 @@
-Script started on 2026-05-21 13:48:39+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="210" LINES="58"]
-[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ clear
-[?2004l[H[2J[3J[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ git add .
-[?2004l[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ git commit ""f"i"n"a"l" "s"e"t"u"p" "f"o"r" "c"i"/"c"d"[C[C[1@ [1@-[1@m[C[1@ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
-[?2004l[main 7717b1e] final setup for ci/cd
- Committer: Ubuntu <ubuntu@ip-172-31-44-226.ec2.internal>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly:
-
-    git config --global user.name "Your Name"
-    git config --global user.email you@example.com
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author
-
- 3 files changed, 61 insertions(+), 108 deletions(-)
- create mode 100644 Jenkinsfile
- create mode 100644 {
-[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ git push origin main
-[?2004lUsername for 'https://github.com': 01Amirkhan
-Password for 'https://01Amirkhan@github.com': 
-remote: Permission to 01Amirkhan/FoodAppZomato.git denied to 01Amirkhan.
-fatal: unable to access 'https://github.com/01Amirkhan/FoodAppZomato.git/': The requested URL returned error: 403
-[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ [7mgit config --global --unset credential.helper[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit config --global --unset credential.helper
-[?2004l[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ [7mgit config --global credential.helper store[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit config --global credential.helper store
-[?2004l[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ [7mrm -f ~/.git-credentials[27mrm -f ~/.git-credentials
-[?2004l[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ [7mgit remote -v[27mgit remote -v
-[?2004lorigin	https://github.com/01Amirkhan/FoodAppZomato.git (fetch)
-origin	https://github.com/01Amirkhan/FoodAppZomato.git (push)
-[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ [7mgit push origin main[27mgit push origin main
-[?2004lUsername for 'https://github.com': 01Amirkhan
-Password for 'https://01Amirkhan@github.com': 
-To https://github.com/01Amirkhan/FoodAppZomato.git
- [31m! [rejected]       [m main -> main (non-fast-forward)
-[31merror: failed to push some refs to 'https://github.com/01Amirkhan/FoodAppZomato.git'
-[m[33mhint: Updates were rejected because the tip of your current branch is behind[m
-[33mhint: its remote counterpart. If you want to integrate the remote changes,[m
-[33mhint: use 'git pull' before pushing again.[m
-[33mhint: See the 'Note about fast-forwards' in 'git push --help' for details.[m
-[?2004h]0;ubuntu@ip-172-31-44-226: ~/FoodAppZomatoubuntu@ip-172-31-44-226:~/FoodAppZomato$ [7mgit pull origin main --rebase[27mgit pull origin main --rebase
-[?2004lFrom https://github.com/01Amirkhan/FoodAppZomato
- * branch            main       -> FETCH_HEAD
-warning: skipped previously applied commit e45f4e1
-[33mhint: use --reapply-cherry-picks to include skipped commits[m
-[33mhint: Disable this message with "git config set advice.skippedCherryPicks false"[m
