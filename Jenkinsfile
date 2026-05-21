@@ -36,26 +36,28 @@ pipeline {
         }
 
         stage('Tag Docker Image') {
-    steps {
-        sh """
-        docker tag ${IMAGE_NAME}:latest \
-        ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_NAME}:latest
-        """
-         }
-       }
+            steps {
+                sh """
+                docker tag ${IMAGE_NAME}:latest \
+                ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_NAME}:latest
+                """
+            }
+        }
 
         stage('Push to ECR') {
-    steps {
+            steps {
 
-        sh """
-        aws ecr get-login-password --region ${AWS_REGION} | \
-        docker login --username AWS --password-stdin \
-        ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
-        """
+                sh """
+                aws ecr get-login-password --region ${AWS_REGION} | \
+                docker login --username AWS --password-stdin \
+                ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+                """
 
-        sh """
-        docker push \
-        ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_NAME}:latest
-        """
+                sh """
+                docker push \
+                ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_NAME}:latest
+                """
+            }
+        }
     }
 }
