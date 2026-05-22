@@ -6,6 +6,11 @@ pipeline {
         AWS_ACCOUNT_ID = "195334031155"
         AWS_REGION = "ap-south-1"
         IMAGE_NAME = "zomato-app"
+
+        // SonarQube Configuration
+        SONAR_HOST_URL = "http://YOUR_PUBLIC_IP:9000"
+        SONAR_PROJECT_KEY = "zomato-app"
+        SONAR_TOKEN = "YOUR_TOKEN"
     }
 
     stages {
@@ -23,6 +28,26 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    sh '''
+                    sonar-scanner \
+                    -Dsonar.projectKey=$SONAR_PROJECT_KEY \
+                    -Dsonar.sources=. \
+                    -Dsonar.host.url=$SONAR_HOST_URL \
+                    -Dsonar.login=$SONAR_TOKEN
+                    '''
+                }
+            }
+        }
+
+        stage('Trivy FS Scan') {
+            steps {
+                sh 'trivy fs .'
+            }
+        }
+
         stage('Build React App') {
             steps {
                 sh 'npm run build'
@@ -32,6 +57,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE_NAME .'
+            }
+        }
+
+        stage('Trivy Image Scan') {
+            steps {
+                sh 'trivy image $IMAGE_NAME:latest'
             }
         }
 
@@ -60,4 +91,18 @@ pipeline {
             }
         }
     }
-}
+
+    post {
+        always {
+            echo 'Pipeline execution completed.'
+        }
+
+        success {
+            echo 'Application successfully built and pushed to ECR.'
+        }
+
+        failure {
+            echo 'Pipeline failed. Check Jenkins console output.'
+        }
+    }
+
